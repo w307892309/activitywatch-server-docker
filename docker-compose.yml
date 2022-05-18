@@ -1,0 +1,12 @@
+version: "2.2"
+
+services:
+  activitywatch:
+    build: .
+    container_name: activitywatch
+    ports:
+      - "5600:5600"
+    volumes:
+      - ./data:/root/.local/share/activitywatch:rw
+      - ./config:/root/.config/activitywatch:rw
+    entrypoint: /bin/bash -c '/activitywatch/aw-server/aw-server --host 0.0.0.0'
